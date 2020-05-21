@@ -1,8 +1,5 @@
 # Copy Links
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/askvortsov/flarum-copy-links.svg)](https://packagist.org/packages/askvortsov/flarum-copy-links)
-
-A [Flarum](http://flarum.org) extension. This discussion adds 'Copy Link' controls to posts and discussions.
+A [Flarum](http://flarum.org) extension. Ever wanted to share a link to an interesting post or discussion? This extension adds 'Copy Link' controls to posts and discussions.
 
 ### Installation
 
@@ -22,3 +19,4 @@ composer update askvortsov/flarum-copy-links
 
 - [Packagist](https://packagist.org/packages/askvortsov/flarum-copy-links)
 - [Github](https://github.com/askvortsov1/flarum-copy-links)
+- [Discuss](https://discuss.flarum.org/d/23885-copy-post-and-discussion-links)
