@@ -23,7 +23,7 @@
   },
   "extra": {
     "flarum-extension": {
-      "title": "Copy Links",
+      "title": "Flarum Copy Links",
       "icon": {
         "name": "fas fa-copy",
         "backgroundColor": "#6932D1",
