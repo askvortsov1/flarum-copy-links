@@ -1,7 +1,7 @@
-import { extend } from 'flarum/extend';
-import DiscussionControls from 'flarum/utils/DiscussionControls';
-import PostControls from 'flarum/utils/PostControls';
-import Button from 'flarum/components/Button';
+import { extend } from "flarum/extend";
+import DiscussionControls from "flarum/utils/DiscussionControls";
+import PostControls from "flarum/utils/PostControls";
+import Button from "flarum/components/Button";
 
 // Credit to https://stackoverflow.com/a/30810322/9716252
 function copyTextToClipboard(text) {
@@ -24,26 +24,25 @@ function copyTextToClipboard(text) {
   //
 
   // Place in top-left corner of screen regardless of scroll position.
-  textArea.style.position = 'fixed';
+  textArea.style.position = "fixed";
   textArea.style.top = 0;
   textArea.style.left = 0;
 
   // Ensure it has a small width and height. Setting to 1px / 1em
   // doesn't work as this gives a negative w/h on some browsers.
-  textArea.style.width = '2em';
-  textArea.style.height = '2em';
+  textArea.style.width = "2em";
+  textArea.style.height = "2em";
 
   // We don't need padding, reducing the size if it does flash render.
   textArea.style.padding = 0;
 
   // Clean up any borders.
-  textArea.style.border = 'none';
-  textArea.style.outline = 'none';
-  textArea.style.boxShadow = 'none';
+  textArea.style.border = "none";
+  textArea.style.outline = "none";
+  textArea.style.boxShadow = "none";
 
   // Avoid flash of white box if rendered for any reason.
-  textArea.style.background = 'transparent';
-
+  textArea.style.background = "transparent";
 
   textArea.value = text;
 
@@ -52,30 +51,54 @@ function copyTextToClipboard(text) {
   textArea.select();
 
   try {
-    var successful = document.execCommand('copy');
-    var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
+    var successful = document.execCommand("copy");
+    var msg = successful ? "successful" : "unsuccessful";
+    console.log("Copying text command was " + msg);
   } catch (err) {
-    console.log('Oops, unable to copy');
+    console.log("Oops, unable to copy");
   }
 
   document.body.removeChild(textArea);
 }
 
-app.initializers.add('askvortsov/flarum-copy-links', () => {
-  extend(DiscussionControls, 'userControls', function (items, discussion) {
-    items.add('copy', Button.component({
-      children: app.translator.trans('askvortsov-copy-links.forum.discussion_controls.copy_link_button'),
-      icon: 'fas fa-copy',
-      onclick: () => copyTextToClipboard(window.location.protocol + '//' + window.location.hostname + app.route.discussion(discussion))
-    }), -1);
+app.initializers.add("askvortsov/flarum-copy-links", () => {
+  extend(DiscussionControls, "userControls", function (items, discussion) {
+    items.add(
+      "copy",
+      Button.component({
+        children: app.translator.trans(
+          "askvortsov-copy-links.forum.discussion_controls.copy_link_button"
+        ),
+        icon: "fas fa-copy",
+        onclick: () =>
+          copyTextToClipboard(
+            window.location.protocol +
+              "//" +
+              window.location.hostname +
+              app.route.discussion(discussion)
+          ),
+      }),
+      -1
+    );
   });
 
-extend(PostControls, 'userControls', function (items, post) {
-    items.add('copy', Button.component({
-      children: app.translator.trans('askvortsov-copy-links.forum.post_controls.copy_link_button'),
-      icon: 'fas fa-copy',
-      onclick: () => copyTextToClipboard(window.location.protocol + '//' + window.location.hostname + app.route.post(post))
-    }), 100);
+  extend(PostControls, "userControls", function (items, post) {
+    items.add(
+      "copy",
+      Button.component({
+        children: app.translator.trans(
+          "askvortsov-copy-links.forum.post_controls.copy_link_button"
+        ),
+        icon: "fas fa-copy",
+        onclick: () =>
+          copyTextToClipboard(
+            window.location.protocol +
+              "//" +
+              window.location.hostname +
+              app.route.post(post)
+          ),
+      }),
+      100
+    );
   });
 });
