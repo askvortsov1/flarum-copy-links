@@ -65,19 +65,21 @@ app.initializers.add("askvortsov/flarum-copy-links", () => {
   extend(DiscussionControls, "userControls", function (items, discussion) {
     items.add(
       "copy",
-      Button.component({
-        children: app.translator.trans(
-          "askvortsov-copy-links.forum.discussion_controls.copy_link_button"
-        ),
-        icon: "fas fa-copy",
-        onclick: () =>
+      <Button
+        icon="fas fa-copy"
+        onclick={() =>
           copyTextToClipboard(
             window.location.protocol +
               "//" +
               window.location.hostname +
               app.route.discussion(discussion)
-          ),
-      }),
+          )
+        }
+      >
+        {app.translator.trans(
+          "askvortsov-copy-links.forum.discussion_controls.copy_link_button"
+        )}
+      </Button>,
       -1
     );
   });
@@ -85,19 +87,21 @@ app.initializers.add("askvortsov/flarum-copy-links", () => {
   extend(PostControls, "userControls", function (items, post) {
     items.add(
       "copy",
-      Button.component({
-        children: app.translator.trans(
-          "askvortsov-copy-links.forum.post_controls.copy_link_button"
-        ),
-        icon: "fas fa-copy",
-        onclick: () =>
+      <Button
+        icon="fas fa-copy"
+        onclick={() =>
           copyTextToClipboard(
             window.location.protocol +
               "//" +
               window.location.hostname +
               app.route.post(post)
-          ),
-      }),
+          )
+        }
+      >
+        {app.translator.trans(
+          "askvortsov-copy-links.forum.post_controls.copy_link_button"
+        )}
+      </Button>,
       100
     );
   });
