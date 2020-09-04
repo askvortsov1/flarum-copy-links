@@ -1,6 +1,7 @@
 import { extend } from "flarum/extend";
 import DiscussionControls from "flarum/utils/DiscussionControls";
 import PostControls from "flarum/utils/PostControls";
+import UserControls from "flarum/utils/UserControls";
 import Button from "flarum/components/Button";
 
 // Credit to https://stackoverflow.com/a/30810322/9716252
@@ -95,6 +96,28 @@ app.initializers.add("askvortsov/flarum-copy-links", () => {
               "//" +
               window.location.hostname +
               app.route.post(post)
+          )
+        }
+      >
+        {app.translator.trans(
+          "askvortsov-copy-links.forum.post_controls.copy_link_button"
+        )}
+      </Button>,
+      100
+    );
+  });
+
+  extend(UserControls, "userControls", function (items, user) {
+    items.add(
+      "copy",
+      <Button
+        icon="fas fa-copy"
+        onclick={() =>
+          copyTextToClipboard(
+            window.location.protocol +
+              "//" +
+              window.location.hostname +
+              app.route.user(user)
           )
         }
       >
